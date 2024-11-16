@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./testdb
+    username: u
+    password: 1
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

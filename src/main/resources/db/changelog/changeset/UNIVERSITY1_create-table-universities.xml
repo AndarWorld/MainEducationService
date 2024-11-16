@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <changeSet id="1" author="Adrian">
+        <createTable tableName="universities">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="uuid" type="uuid">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar"/>
+            <column name="period_from" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="government_status" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="universities"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2" author="Adrian">
+        <insert tableName="universities">
+            <column name="title" value="Саратовская государственная юридическая академия (СГЮА)"/>
+            <column name="uuid" value="d6f6d65a-5a47-40ad-8482-4facb032491f"/>
+            <column name="city" value="Саратов"/>
+            <column name="description" value="Юридическая академия"/>
+            <column name="period_from" value="1931-04-01"/>
+            <column name="government_status" value="true"/>
+        </insert>
+        <insert tableName="universities">
+            <column name="title" value="Санкт-Петербургский государственный университет телекоммуникаций им. проф. М.А. Бонч-Бруевича"/>
+            <column name="uuid" value="d80c727f-edc1-48fd-a5e4-1eb0722d7e22"/>
+            <column name="city" value="Санкт-Петербург"/>
+            <column name="description" value="Технический университет"/>
+            <column name="period_from" value="1930-06-23"/>
+            <column name="government_status" value="true"/>
+        </insert>
+        <insert tableName="universities">
+            <column name="title" value="Московский технический университет связи и информатики"/>
+            <column name="uuid" value="f90c1262-4c67-46cf-bda7-0e2cd8209456"/>
+            <column name="city" value="Москва"/>
+            <column name="description" value="Технический университет"/>
+            <column name="period_from" value="1921-03-23"/>
+            <column name="government_status" value="true"/>
+        </insert>
+        <insert tableName="universities">
+            <column name="title" value="Уфимский государственный нефтяной технический университет"/>
+            <column name="uuid" value="0d546bba-2a09-4951-8e05-65e44a9f9314"/>
+            <column name="city" value="Уфа"/>
+            <column name="description" value="Технический университет"/>
+            <column name="period_from" value="1948-02-24"/>
+            <column name="government_status" value="true"/>
+        </insert>
+        <rollback>
+            <delete tableName="universities">
+                <where>title='Саратовская государственная юридическая академия (СГЮА)'</where>
+            </delete>
+            <delete tableName="universities">
+                <where>title='Санкт-Петербургский государственный университет телекоммуникаций им. проф. М.А. Бонч-Бруевича'</where>
+            </delete>
+            <delete tableName="universities">
+                <where>title='Уфимский государственный нефтяной технический университет'</where>
+            </delete>
+            <delete tableName="universities">
+                <where>title='Московский технический университет связи и информатики'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+
+
+</databaseChangeLog>
