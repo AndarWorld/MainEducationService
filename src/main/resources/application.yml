@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: UniversityService
+    name: UNIVERSITY-SERVICE
   datasource:
     url: ${DB_PASSWORD}
     username: ${DB_USERNAME}
