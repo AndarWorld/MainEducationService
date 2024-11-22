@@ -9,6 +9,8 @@ public record UniversityResponseDto(
 
         String periodFrom,
 
-        Boolean governmentStatus
+        Boolean governmentStatus,
+
+        String fromWho
 ) {
 }

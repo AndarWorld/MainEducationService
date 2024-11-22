@@ -14,6 +14,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "universities")
@@ -29,7 +30,7 @@ public class University {
     private Long id;
 
     @Column
-    private String uuid;
+    private UUID uuid;
 
     @Column
     private String title;
