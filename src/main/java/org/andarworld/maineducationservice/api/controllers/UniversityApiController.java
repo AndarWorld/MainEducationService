@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.andarworld.maineducationservice.usecases.UniversityService;
 import org.andarworld.maineducationservice.usecases.dto.UniversityResponseDto;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +28,11 @@ public class UniversityApiController {
         log.debug("Getting all universities");
         UniversityResponseDto university = universityService.getUniversityByUuid(uuid);
         return ResponseEntity.ok(university);
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> getUniversityAdmin() {
+        return ResponseEntity.ok("Hi from admin university!");
     }
 }
