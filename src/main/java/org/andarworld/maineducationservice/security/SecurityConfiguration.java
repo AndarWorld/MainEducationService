@@ -3,6 +3,7 @@ package org.andarworld.maineducationservice.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -26,11 +27,12 @@ import java.util.stream.Collectors;
 @EnableWebSecurity
 @EnableMethodSecurity
 @Slf4j
+@RefreshScope
 public class SecurityConfiguration {
-    @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
+    @Value("${spring.main.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String ISSUER_JWK;
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+    @Value("${spring.main.oauth2.resourceserver.jwt.issuer-uri}")
     private String ISSUER_URI;
 
     @Bean

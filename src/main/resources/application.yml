@@ -9,24 +9,5 @@ spring:
     password: ${DB_PASSWORD}
   liquibase:
     change-log: db/changelog/changelog.xml
-  jpa:
-    hibernate:
-      ddl-auto: none
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: ${KEYCLOAK_JWK_URI}
-          issuer-uri: ${KEYCLOAK_ISSUER_URI}
-
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL}
-  instance:
-    instance-id: ${EUREKA_INSTANCE_ID:${random.value}}
-
-logging:
-  level:
-    root: info
-    org.andarworld.courseservice: debug
+  config:
+    import: configserver:http://localhost:8787
