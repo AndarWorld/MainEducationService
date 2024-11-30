@@ -118,6 +118,17 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.27.0</version>
+				<configuration>
+					<changeLogFile>db/changelog/changelog.xml</changeLogFile>
+					<url>jdbc:postgresql://localhost:4321/testdbuniversity</url>
+					<username>u</username>
+					<password>1</password>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
